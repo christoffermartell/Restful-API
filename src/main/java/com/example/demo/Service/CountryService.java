@@ -1,6 +1,6 @@
 package com.example.demo.Service;
 
-import com.example.demo.Model.CountryEntity;
+import com.example.demo.Model.Country;
 import com.example.demo.Repository.Repository;
 
 import java.util.Collection;
@@ -9,19 +9,19 @@ public class CountryService {
 
     private Repository repository = new Repository();
 
-    public CountryEntity createCountry(String name, String capitalCity) {
+    public Country createCountry(String name, String capitalCity) {
 
-        CountryEntity country = new CountryEntity(name, capitalCity);
+        Country country = new Country(name, capitalCity);
         repository.addCountry(country);
         return country;
 
     }
 
-    public Collection<CountryEntity> getAllCountries() {
+    public Collection<Country> getAllCountries() {
         return repository.getCountries();
     }
 
-    public CountryEntity getCountry(String name) {
+    public Country getCountry(String name) {
         return repository.getCountry(name);
 
     }
@@ -39,7 +39,7 @@ public class CountryService {
 
     public boolean updateCountry(String name, String capitalCity) {
 
-        CountryEntity country = repository.getCountry(name);
+        Country country = repository.getCountry(name);
         if (country == null) {
             return false;
         }

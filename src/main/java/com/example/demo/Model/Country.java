@@ -5,14 +5,14 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CountryEntity {
+public class Country {
 
     public String name;
     public String capitalCity;
 
 
 
-    public CountryEntity(String name, String capitalCity) {
+    public Country(String name, String capitalCity) {
         this.name = name;
         this.capitalCity = capitalCity;
     }

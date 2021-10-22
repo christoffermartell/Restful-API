@@ -1,6 +1,6 @@
 package com.example.demo.Controller;
 
-import com.example.demo.Model.CountryEntity;
+import com.example.demo.Model.Country;
 
 import com.example.demo.Service.CountryService;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +16,7 @@ public class CountryController {
 
 
     @PutMapping("/countries/create")
-    public CountryEntity createCountry(@RequestBody CreateCountry createCountry) {
+    public Country createCountry(@RequestBody CreateCountry createCountry) {
 
 
         return service.createCountry(createCountry.name, createCountry.capitalCity);
@@ -24,14 +24,14 @@ public class CountryController {
     }
 
     @GetMapping("/countries/all")
-    public Collection<CountryEntity> getAllCountries() {
+    public Collection<Country> getAllCountries() {
         return service.getAllCountries();
 
     }
 
     @GetMapping("/countries/single/{countryName}")
-    public CountryEntity getCountry(@PathVariable("countryName") String countryName, HttpServletResponse response) {
-        CountryEntity country = service.getCountry(countryName);
+    public Country getCountry(@PathVariable("countryName") String countryName, HttpServletResponse response) {
+        Country country = service.getCountry(countryName);
         if (country == null) {
             response.setStatus(404);
             return null;
@@ -48,7 +48,7 @@ public class CountryController {
     }
 
     @PatchMapping("/countries/update/{countryName}")
-    public CountryEntity updateCountry(
+    public Country updateCountry(
             @PathVariable("countryName") String countryName,
             @RequestBody UpdateCountry updateCountry,
             HttpServletResponse response) {
